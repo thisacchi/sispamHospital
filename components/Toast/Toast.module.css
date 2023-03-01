@@ -1,0 +1,28 @@
+.iniciarNoTopo{
+    top: -7.5rem;
+}
+
+.mostrarToast{
+    animation-name: mostrar;
+    animation-duration: 1s;
+}
+
+.bg-red{
+    background-color: rgb(255 254 254 / 1);
+}
+
+.esconderToast{
+    top: -7.5rem;
+    animation-name: esconder;
+    animation-duration: 0.5s;
+}
+
+@keyframes mostrar {
+    from {top: -7.5rem;}
+    to {top: 0;}
+}
+
+@keyframes esconder {
+    from {top: 0;}
+    to {top: -7.5rem;}
+}
