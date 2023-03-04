@@ -4,7 +4,7 @@ import style from 'components/Toast/Toast.module.css';
 
 export default function Toast() {
 
-    const { className, cor, mensagem } = useToast();
+    const { className, cor, mensagem, fecharToast } = useToast();
 
     const bg = {
         'red': 'bg-red-50',
@@ -32,7 +32,7 @@ export default function Toast() {
                     ${border[cor]} mt-2 `}>
                 <div className="flex flex-col">
                     <div className="flex justify-end pr-2">
-                        <button>X</button>
+                        <button onClick={fecharToast}>X</button>
                     </div>
                     <div className="text-center">
                         <h3 className={`${colorText[cor]} font-bold`}>{mensagem?.titulo}</h3>

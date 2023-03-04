@@ -25,7 +25,6 @@ export default function QuadroLogin() {
         if (loginValido && senhaValida) {
 
             const retorno = await autenticar(login, senha);
-            console.log(retorno);
 
             if (retorno.sucesso) {
                 route.push('inicio');

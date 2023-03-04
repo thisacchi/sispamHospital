@@ -6,7 +6,8 @@ interface ToastContextProps {
     mostrarToast?: (mostrar: boolean, mensagem: ToastMensagem, type: 'success' | 'info' | 'error') => void,
     className?: 'iniciarNoTopo' | 'mostrarToast' | 'esconderToast',
     cor?: 'blue' | 'red' | 'green',
-    mensagem?: ToastMensagem
+    mensagem?: ToastMensagem,
+    fecharToast?: () => void
 }
 
 const ToastContext = createContext<ToastContextProps>({});
@@ -17,6 +18,7 @@ export function ToastProvider(props) {
     const [className, setClassName] = useState<'iniciarNoTopo' | 'mostrarToast' | 'esconderToast'>('iniciarNoTopo');
     const [cor, setCor] = useState<'blue' | 'red' | 'green'>('green');
     const [mensagem, setMensagem] = useState<ToastMensagem>(null);
+    const [tmo, setTmo] = useState<NodeJS.Timeout>(null);
 
     function mostrarToast(mostrar: boolean, mensagem: ToastMensagem, type: 'success' | 'info' | 'error' = 'success') {
 
@@ -37,13 +39,22 @@ export function ToastProvider(props) {
 
         if (mostrar){
 
-            setTimeout(() => {
+          let timeOut = setTimeout(() => {
                 setToastVisivel(false);
                 setClassName('esconderToast');
-            }, 2000);
+            }, 2500);
+
+            setTmo(timeOut);
         }
 
     }
+
+    function fecharToast(){
+        setClassName('iniciarNoTopo');
+        clearTimeout(tmo);
+        setTmo(tmo);
+    }
+
 
     return (
         <ToastContext.Provider value={{
@@ -51,7 +62,8 @@ export function ToastProvider(props) {
             toastVisivel,
             className,
             cor,
-            mensagem
+            mensagem,
+            fecharToast
             
         }}>
             {props.children}
