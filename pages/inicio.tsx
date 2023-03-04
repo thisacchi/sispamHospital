@@ -1,8 +1,8 @@
+import BarraMenu from "@/components/Menu/BarraMenu";
+
 export default function Inicio(){
 
     return (
-        <div>
-            <h2 className="text-blue-500 font-bold">Logado!!!</h2>
-        </div>
+        <BarraMenu></BarraMenu>
     );
 }
