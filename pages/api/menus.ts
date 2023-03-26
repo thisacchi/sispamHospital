@@ -6,12 +6,12 @@ type Menu = {
 
 const links: Menu[] = [
     {
-        texto: 'Cesáreas',
-        link: ''
+        texto: 'Cirúrgias',
+        link: 'cirurgias'
     },
     {
         texto: 'Internações',
-        link: ''
+        link: 'internacoes'
     }
 ]
 
